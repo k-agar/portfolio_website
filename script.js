@@ -14,15 +14,15 @@ window.addEventListener('scroll', () => {
   // active nav link
   let current = '';
   sections.forEach(sec => {
-    if (window.scrollY >= sec.offsetTop - 100) {
+    if (window.scrollY >= sec.offsetTop - 120) {
       current = sec.getAttribute('id');
     }
   });
 
   navLinks.forEach(link => {
-    link.style.color = '';
+    link.classList.remove('active');
     if (link.getAttribute('href') === `#${current}`) {
-      link.style.color = '#e6edf3';
+      link.classList.add('active');
     }
   });
 });
@@ -46,9 +46,51 @@ navLinksList.querySelectorAll('a').forEach(link => {
 });
 
 
+/* ── TERMINAL TYPING ANIMATION ── */
+function typeCommand(element, text, delay, callback) {
+  let index = 0;
+  element.textContent = '';
+  const interval = setInterval(() => {
+    element.textContent += text[index];
+    index++;
+    if (index >= text.length) {
+      clearInterval(interval);
+      if (callback) callback();
+    }
+  }, delay);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const cmd1 = document.getElementById('cmd1');
+  const block1 = document.getElementById('block1');
+  const line2 = document.getElementById('line2');
+  const cmd2 = document.getElementById('cmd2');
+  const block2 = document.getElementById('block2');
+  const line3 = document.getElementById('line3');
+
+  if (cmd1) {
+    // Start terminal animation after a brief delay
+    setTimeout(() => {
+      typeCommand(cmd1, 'cat profile.json', 60, () => {
+        block1.style.display = 'block';
+        setTimeout(() => {
+          line2.style.display = 'block';
+          typeCommand(cmd2, 'ping -c 1 opportunities', 50, () => {
+            block2.style.display = 'block';
+            setTimeout(() => {
+              line3.style.display = 'block';
+            }, 300);
+          });
+        }, 400);
+      });
+    }, 500);
+  }
+});
+
+
 /* ── FADE-IN ON SCROLL ── */
 const fadeEls = document.querySelectorAll(
-  '.link-card, .stat-card, .skill-cat, .proj-card, .timeline-item, .contact-card'
+  '.link-card, .stat-card, .skill-cat, .proj-card, .timeline-body, .contact-card'
 );
 
 const observer = new IntersectionObserver((entries) => {
@@ -58,11 +100,11 @@ const observer = new IntersectionObserver((entries) => {
       observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.12 });
+}, { threshold: 0.1 });
 
 fadeEls.forEach((el, i) => {
   el.classList.add('fade-in');
-  el.style.transitionDelay = `${(i % 4) * 60}ms`;   // stagger siblings
+  el.style.transitionDelay = `${(i % 3) * 60}ms`;   // stagger siblings
   observer.observe(el);
 });
 
@@ -101,21 +143,9 @@ const statsObserver = new IntersectionObserver((entries) => {
       statsObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.4 });
+}, { threshold: 0.15 });
 
 statNums.forEach(el => statsObserver.observe(el));
-
-
-/* ── SMOOTH SCROLL for older browsers ── */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
 
 
 /* ── COPY EMAIL on click ── */
@@ -126,11 +156,11 @@ if (emailLink) {
     if (navigator.clipboard) {
       e.preventDefault();
       navigator.clipboard.writeText(email).then(() => {
-        const original = emailLink.textContent;
-        emailLink.textContent = '✓ copied!';
-        emailLink.style.color = '#7ee787';
+        const original = emailLink.innerHTML;
+        emailLink.innerHTML = '<i class="fa-solid fa-check"></i> copied!';
+        emailLink.style.color = '#10b981';
         setTimeout(() => {
-          emailLink.textContent = original;
+          emailLink.innerHTML = original;
           emailLink.style.color = '';
         }, 2000);
       });

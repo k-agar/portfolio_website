@@ -6,15 +6,21 @@
   <title>Krishna Agarwal — CS Student & Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ── NAVBAR ── -->
+  <!-- ── DECORATIVE BACKGROUND ── -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+
+  <!-- ── FLOATING NAVBAR ── -->
   <nav class="nav" id="navbar">
-    <div class="nav-logo"><span class="accent-green">~/</span>krishna_agarwal<span class="accent-green">.sh</span></div>
+    <div class="nav-logo">
+      <span class="accent-gradient">&lt;</span>krishna.agarwal <span class="accent-gradient">/&gt;</span>
+    </div>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
@@ -26,22 +32,55 @@
     </ul>
   </nav>
 
-  <!-- ── HERO ── -->
+  <!-- ── HERO SECTION ── -->
   <section class="hero" id="about">
-    <div class="container">
-      <p class="hero-tag">// hello, world 👋</p>
-      <h1 class="hero-name">Krishna <span class="accent-blue">Agarwal</span></h1>
-      <p class="hero-title">Mathematics & Computing Student &nbsp;·&nbsp; Aspiring Software Engineer<span class="cursor"></span></p>
-      <p class="hero-desc">
-        Mathematics &amp; Computing student at Netaji Subhas University of Technology (NSUT), passionate about Data Structures &amp; Algorithms, Full-Stack Development and Machine Learning. Solved 275+ LeetCode problems and currently serving as a DSA Mentor at GDG NSUT.
-      </p>
-      <div class="cta-row">
-        <a href="Resume_off.pdf" class="btn btn-primary" download>
-          <i class="fa-solid fa-download"></i> Download Resume
-        </a>
-        <a href="#contact" class="btn btn-outline">
-          <i class="fa-solid fa-envelope"></i> Get in Touch
-        </a>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <p class="hero-tag">// hello, world 👋</p>
+        <h1 class="hero-name">Krishna <span class="accent-gradient">Agarwal</span></h1>
+        <p class="hero-title">Software Engineer &amp; Mathematics &amp; Computing Student</p>
+        <p class="hero-desc">
+          Mathematics &amp; Computing student at Netaji Subhas University of Technology (NSUT), passionate about Data Structures &amp; Algorithms, Full-Stack Development, and Machine Learning. Solved 275+ LeetCode problems and currently serving as a DSA Mentor at GDG NSUT.
+        </p>
+        <div class="cta-row">
+          <a href="Resume_off.pdf" class="btn btn-primary" download>
+            <i class="fa-solid fa-download"></i> Download Resume
+          </a>
+          <a href="#contact" class="btn btn-outline">
+            <i class="fa-solid fa-envelope"></i> Get in Touch
+          </a>
+        </div>
+      </div>
+      
+      <!-- Interactive Terminal Mockup -->
+      <div class="hero-terminal">
+        <div class="terminal-header">
+          <div class="terminal-buttons">
+            <span class="btn-close"></span>
+            <span class="btn-minimize"></span>
+            <span class="btn-maximize"></span>
+          </div>
+          <div class="terminal-title">krishna@nsut:~</div>
+        </div>
+        <div class="terminal-body-content">
+          <div class="line"><span class="t-prompt">~</span> <span class="t-cmd" id="cmd1"></span></div>
+          <div class="terminal-block" id="block1" style="display: none;">
+            <div class="line t-output">{</div>
+            <div class="line t-output">&nbsp;&nbsp;<span class="t-key">"name"</span>: <span class="t-val">"Krishna Agarwal"</span>,</div>
+            <div class="line t-output">&nbsp;&nbsp;<span class="t-key">"education"</span>: <span class="t-val">"B.Tech, Mathematics & Computing"</span>,</div>
+            <div class="line t-output">&nbsp;&nbsp;<span class="t-key">"university"</span>: <span class="t-val">"NSUT Delhi"</span>,</div>
+            <div class="line t-output">&nbsp;&nbsp;<span class="t-key">"role"</span>: <span class="t-val">"DSA Mentor & Full-Stack Developer"</span>,</div>
+            <div class="line t-output">&nbsp;&nbsp;<span class="t-key">"solved_leetcode"</span>: <span class="t-val">275</span>,</div>
+            <div class="line t-output">&nbsp;&nbsp;<span class="t-key">"cgpa"</span>: <span class="t-val">8.10</span></div>
+            <div class="line t-output">}</div>
+          </div>
+          <div class="line" id="line2" style="display: none;"><span class="t-prompt">~</span> <span class="t-cmd" id="cmd2"></span></div>
+          <div class="terminal-block" id="block2" style="display: none;">
+            <div class="line t-output">64 bytes from opportunities: icmp_seq=1 ttl=64 time=0.03ms</div>
+            <div class="line t-output">System status: <span class="accent-green">Active & seeking internships ✓</span></div>
+          </div>
+          <div class="line" id="line3" style="display: none;"><span class="t-prompt">~</span> <span class="t-cmd"><span class="cursor"></span></span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -52,7 +91,7 @@
       <h2 class="sec-title">// profiles &amp; links</h2>
       <div class="links-grid">
 
-        <a href="https://www.linkedin.com/in/krishna-agarwal-00bb51320/" target="_blank" rel="noopener" class="link-card">
+        <a href="https://www.linkedin.com/in/krishna-agarwal-00bb51320/" target="_blank" rel="noopener" class="link-card linkedin-hover">
           <div class="link-icon linkedin-icon">
             <i class="fa-brands fa-linkedin-in"></i>
           </div>
@@ -63,7 +102,7 @@
           <i class="fa-solid fa-arrow-up-right-from-square link-ext"></i>
         </a>
 
-        <a href="https://github.com/k-agar" target="_blank" rel="noopener" class="link-card">
+        <a href="https://github.com/k-agar" target="_blank" rel="noopener" class="link-card github-hover">
           <div class="link-icon github-icon">
             <i class="fa-brands fa-github"></i>
           </div>
@@ -74,7 +113,7 @@
           <i class="fa-solid fa-arrow-up-right-from-square link-ext"></i>
         </a>
 
-        <a href="https://leetcode.com/krishna-agarwal" target="_blank" rel="noopener" class="link-card">
+        <a href="https://leetcode.com/krishna-agarwal" target="_blank" rel="noopener" class="link-card leetcode-hover">
           <div class="link-icon leetcode-icon">
             <i class="fa-solid fa-code"></i>
           </div>
@@ -85,7 +124,7 @@
           <i class="fa-solid fa-arrow-up-right-from-square link-ext"></i>
         </a>
 
-        <a href="Resume_off.pdf" class="link-card" download>
+        <a href="Resume_off.pdf" class="link-card resume-hover" download>
           <div class="link-icon resume-icon">
             <i class="fa-solid fa-file-pdf"></i>
           </div>
